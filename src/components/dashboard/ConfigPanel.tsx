@@ -59,7 +59,7 @@ function ConfigPanel() {
 
   return (
     <div className="fixed right-0 top-0 h-full w-80 bg-white shadow-2xl border-l border-gray-200 z-50 overflow-y-auto">
-      {/* Header */}
+      
       <div className="flex justify-between items-center p-4 border-b border-gray-200 sticky top-0 bg-white">
         <div>
           <h3 className="font-bold text-gray-800">Widget Settings</h3>
@@ -138,7 +138,7 @@ function ConfigPanel() {
           </div>
         </div>
 
-        {/* KPI Settings */}
+       
         {type === 'kpi' && (
           <div className="space-y-3">
             <h4 className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Data Settings</h4>

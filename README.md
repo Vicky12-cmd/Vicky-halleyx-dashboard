@@ -1,46 +1,138 @@
-# Getting Started with Create React App
+# Halleyx Custom Dashboard Builder
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A full-stack custom dashboard builder that allows users to create personalized dashboards with various widgets, integrated with a Customer Order module.
 
-## Available Scripts
+## 🚀 Tech Stack
 
-In the project directory, you can run:
+**Frontend:**
+- React + TypeScript
+- Tailwind CSS
+- Zustand (State Management)
+- React Grid Layout (Drag & Drop)
+- Recharts (Charts)
+- React Hook Form (Form Validation)
+- React Hot Toast (Notifications)
+- Axios (HTTP Client)
 
-### `npm start`
+**Backend:**
+- Node.js + Express
+- MongoDB + Mongoose
+- REST APIs
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## 📋 Features
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Customer Orders Module
+- Create, Edit, Delete orders
+- Auto-calculate Total Amount (Quantity × Unit Price)
+- Status tracking (Pending, In Progress, Completed)
+- Right-click context menu
+- Form validation
 
-### `npm test`
+### Dashboard Builder
+- Drag & drop widget placement
+- Resize widgets
+- 7 widget types:
+  - Bar Chart
+  - Line Chart
+  - Pie Chart
+  - Area Chart
+  - Scatter Plot
+  - Table
+  - KPI Card
+- Widget configuration panel
+- Save/Load dashboard layout
+- Date filter (Today, Last 7/30/90 Days, All time)
+- Responsive design (Desktop, Tablet, Mobile)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🛠️ Setup Instructions
 
-### `npm run build`
+### Prerequisites
+- Node.js (v16+)
+- MongoDB
+- Git
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Backend Setup
+```bash
+cd server
+npm install
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Create `.env` file:
+```
+PORT=5000
+MONGO_URI=mongodb://127.0.0.1:27017/halleyx
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Start server:
+```bash
+npm run dev
+```
 
-### `npm run eject`
+### Frontend Setup
+```bash
+cd client
+npm install
+npm start
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## 🌐 Running the App
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. Start MongoDB (via MongoDB Compass)
+2. Start Backend: `cd server && npm run dev`
+3. Start Frontend: `cd client && npm start`
+4. Open: `http://localhost:3000`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## 📊 Sample Workflow
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Create Orders:
+1. Click **Customer Orders** tab
+2. Click **+ Create Order**
+3. Fill in customer and order details
+4. Click **Submit**
 
-## Learn More
+### Build Dashboard:
+1. Click **Dashboard** tab
+2. Click **Configure Dashboard**
+3. Click widgets from sidebar to add
+4. Hover widget → Click ⚙️ to configure
+5. Set X/Y Axis, colors, metrics
+6. Click **Save Configuration**
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 📁 Project Structure
+```
+halleyx-dashboard/
+├── client/                 # React Frontend
+│   └── src/
+│       ├── components/
+│       │   ├── orders/     # Order CRUD
+│       │   ├── dashboard/  # Dashboard Builder
+│       │   └── widgets/    # Chart Widgets
+│       ├── store/          # Zustand State
+│       ├── hooks/          # Custom Hooks
+│       └── types/          # TypeScript Types
+└── server/                 # Node.js Backend
+    ├── models/             # MongoDB Models
+    └── routes/             # API Routes
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 🔌 API Endpoints
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/orders` | Get all orders |
+| POST | `/orders` | Create order |
+| PUT | `/orders/:id` | Update order |
+| DELETE | `/orders/:id` | Delete order |
+| GET | `/dashboard` | Get dashboard layout |
+| POST | `/dashboard/save` | Save dashboard layout |
+
+## 🎯 Key Design Decisions
+
+1. **Zustand over Redux** — Simpler, less boilerplate for this scope
+2. **React Grid Layout** — Built-in grid snapping and resize
+3. **MongoDB** — Flexible schema for widget configurations
+4. **TypeScript** — Better code quality and maintainability
+
+## 👨‍💻 Author
+
+Built for Halleyx Full Stack Engineer Challenge 2026

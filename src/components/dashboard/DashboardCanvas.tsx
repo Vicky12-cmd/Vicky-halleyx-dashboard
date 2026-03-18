@@ -45,17 +45,22 @@ function DashboardCanvas() {
     <div ref={containerRef} className="bg-white rounded-xl border border-gray-200 min-h-96 p-2">
       {mounted && (
         <ResponsiveGridLayout
-          className="layout"
-          layouts={{ lg: layout, md: layout, sm: layout, xs: layout, xxs: layout }}
-          breakpoints={{ lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0 }}
-          cols={{ lg: 12, md: 10, sm: 6, xs: 4, xxs: 2 }}
-          rowHeight={80}
-          width={width}
-          dragConfig={{ enabled: isConfigMode }}
-          resizeConfig={{ enabled: isConfigMode }}
-          onLayoutChange={(currentLayout) => updateLayout(currentLayout as any)}
-          margin={[12, 12]}
-        >
+  className="layout"
+  width={width}
+  layouts={{
+    lg: layout,
+    md: layout.map(l => ({ ...l, w: Math.min(l.w, 10) })),
+    sm: layout.map(l => ({ ...l, w: Math.min(l.w, 6) })),
+    xs: layout.map(l => ({ ...l, w: Math.min(l.w, 4) })),
+    xxs: layout.map(l => ({ ...l, w: 2 }))
+  }}
+  breakpoints={{ lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0 }}
+  cols={{ lg: 12, md: 10, sm: 6, xs: 4, xxs: 2 }}
+  rowHeight={80}
+  onLayoutChange={(layout: any, layouts: any) => updateLayout(layout)}
+  margin={[12, 12]}
+>
+        
           {widgets.map(widget => (
           <div key={widget.id} className="relative group h-full">
             {isConfigMode && (

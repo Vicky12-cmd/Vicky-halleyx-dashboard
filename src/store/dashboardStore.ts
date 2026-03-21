@@ -2,7 +2,9 @@ import { create } from 'zustand'
 import axios from 'axios'
 import { Widget, DashboardLayout } from '../types'
 
-const API = 'http://localhost:5000/dashboard'
+const API = process.env.REACT_APP_API_URL
+  ? `${process.env.REACT_APP_API_URL}/dashboard`
+  : 'http://localhost:5000/dashboard'
 
 interface DashboardStore {
   widgets: Widget[]
